@@ -1,6 +1,6 @@
 {
   "label": "AKTUALNIE CZYTAM",
-  "title": "Metro 2033",
+  "title": "Metro 2034",
   "subtitle": "Dmitry Glukhovsky",
   "status": "W trakcie",
   "footer": "I USE ARCH • BTW",
@@ -9,5 +9,5 @@
   "background": "transparent",
   "foreground": "#1D2933",
   "muted": "#788A98",
-  "link": "https://pl.wikipedia.org/wiki/Metro_2033"
+  "link": "https://pl.wikipedia.org/wiki/Metro_2034"
 }
