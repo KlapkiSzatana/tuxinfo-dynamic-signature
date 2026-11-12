@@ -6,8 +6,8 @@ from PIL import ImageFont
 
 ROOT = Path(__file__).resolve().parent
 
-WIDTH = 700
-HEIGHT = 75
+WIDTH = 600
+HEIGHT = 65
 
 def load_font(size, bold=False):
     path = (
