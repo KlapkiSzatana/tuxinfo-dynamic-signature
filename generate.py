@@ -31,6 +31,7 @@ def main():
     fg = cfg.get("foreground", "#202522")
     muted = cfg.get("muted", "#737b76")
     accent = cfg.get("accent", "#4f8a70")
+    footer_color = cfg.get("footer_color", "#1793D1")
 
     # Przezroczyste tło
     image = Image.new("RGBA", (WIDTH, HEIGHT), (0, 0, 0, 0))
@@ -88,6 +89,24 @@ def main():
             font=status_font,
             fill=accent
         )
+
+    footer = fit_text(
+        draw,
+        cfg.get("footer", "TUXINFO • PERSONAL STATUS"),
+        load_font(10, True),
+        250
+    )
+    
+    footer_width = draw.textbbox(
+        (0, 0), footer, font=load_font(10, True)
+    )[2]
+    
+    draw.text(
+        (WIDTH - footer_width - 12, 55),
+        footer,
+        font=load_font(10, True),
+        fill=footer_color
+    )
 
     image.save(
         ROOT / "signature.png",
