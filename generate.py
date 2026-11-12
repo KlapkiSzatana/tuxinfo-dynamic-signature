@@ -40,7 +40,7 @@ def main():
     label_font = load_font(10, True)
     title_font = load_font(22, True)
     subtitle_font = load_font(12)
-    status_font = load_font(10, True)
+    #status_font = load_font(10, True)
 
     x = 12
 
@@ -68,27 +68,27 @@ def main():
     if subtitle:
         draw.text((x, 53), subtitle, font=subtitle_font, fill=muted)
 
-    status = str(cfg.get("status", "")).strip()
+    #status = str(cfg.get("status", "")).strip()
 
-    if status:
-        status_width = draw.textbbox(
-            (0, 0), status, font=status_font
-        )[2]
+    #if status:
+        #status_width = draw.textbbox(
+            #(0, 0), status, font=status_font
+        #)[2]
 
-        pill_x = WIDTH - status_width - 32
+        #pill_x = WIDTH - status_width - 32
 
-        draw.rounded_rectangle(
-            (pill_x, 28, WIDTH - 12, 48),
-            radius=10,
-            fill=(231, 238, 233, 230)
-        )
+        #draw.rounded_rectangle(
+            #(pill_x, 28, WIDTH - 12, 48),
+            #radius=10,
+            #fill=(231, 238, 233, 230)
+        #)
 
-        draw.text(
-            (pill_x + 10, 33),
-            status,
-            font=status_font,
-            fill=accent
-        )
+        #draw.text(
+            #(pill_x + 10, 33),
+            #status,
+            #font=status_font,
+            #fill=accent
+        #)
 
     footer = fit_text(
         draw,
