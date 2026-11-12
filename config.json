@@ -1,0 +1,12 @@
+{
+  "label": "AKTUALNIE CZYTAM",
+  "title": "Metro 2033",
+  "subtitle": "Dmitry Glukhovsky",
+  "status": "W trakcie",
+  "footer": "I USE ARCH • BTW",
+  "accent": "#4f8a70",
+  "background": "#f5f6f4",
+  "foreground": "#202522",
+  "muted": "#737b76",
+  "link": "https://pl.wikipedia.org/wiki/Metro_2033"
+}
