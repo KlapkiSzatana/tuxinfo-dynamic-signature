@@ -39,6 +39,7 @@ def svg_text(x, y, text, size, color, bold=False, anchor="start"):
     )
 
 
+
 def main():
     cfg = json.loads(
         (ROOT / "config.json").read_text(encoding="utf-8")
@@ -57,14 +58,13 @@ def main():
     right_line2 = str(cfg.get("right_line2", "")).strip()
     footer = str(cfg.get("footer", "TUXINFO • PERSONAL STATUS"))
 
-    # Fonty
     label_font = load_font(10, True)
     title_font = load_font(22, True)
     subtitle_font = load_font(12)
     right_font = load_font(10, True)
     footer_font = load_font(10, True)
 
-    # Szerokość lewej kolumny
+    # Szerokość obliczana na podstawie treści
     left_width = max(
         measure(label, label_font),
         measure(title, title_font),
@@ -72,7 +72,6 @@ def main():
         150
     )
 
-    # Szerokość prawej kolumny
     right_width = max(
         measure(right_line1, right_font),
         measure(right_line2, right_font),
@@ -80,38 +79,20 @@ def main():
         120
     )
 
-    # Rozmieszczenie
-    padding = 12
+    # Minimalna szerokość i proporcje kolumn
+    WIDTH = max(
+        700,
+        int((left_width + right_width + 100) / 0.95)
+    )
+
+    HEIGHT = 75
+    split = int(WIDTH * 0.60)
+
     left_x = 27
-    gap = 20
-    lightning_width = 16
+    right_edge = WIDTH - 16
 
-    divider_x = left_x + left_width + gap
-    right_edge = divider_x + lightning_width + gap + right_width
-
-    WIDTH = max(MIN_WIDTH, int(right_edge + padding))
-
-    # Piorun
-    cx = divider_x + lightning_width / 2
-
-    lightning = (
-        f"{cx-3},10 "
-        f"{cx+5},10 "
-        f"{cx+1},30 "
-        f"{cx+8},30 "
-        f"{cx-5},64 "
-        f"{cx-1},40 "
-        f"{cx-8},40"
-    )
-
-    # Budowanie SVG
+    # SVG
     elements = []
-
-    # Lewy akcent
-    elements.append(
-        f'<rect x="12" y="12" width="4" height="51" '
-        f'rx="2" fill="{accent}"/>'
-    )
 
     # Lewa kolumna
     elements.append(svg_text(
@@ -126,34 +107,50 @@ def main():
         left_x, 64, subtitle, 12, muted
     ))
 
-    # Błyskawica
+    # Piorun - duże, ukośne przecięcie
+    # Rozciągnięte na niemal całą wysokość grafiki
+    lightning = [
+        (split - 5, 0),
+        (split + 8, 0),
+        (split - 1, 28),
+        (split + 12, 28),
+        (split - 9, 75),
+        (split - 3, 42),
+        (split - 15, 42)
+    ]
+
+    points = " ".join(
+        f"{x},{y}" for x, y in lightning
+    )
+
     elements.append(
-        f'<polygon points="{lightning}" fill="{accent}"/>'
+        f'<polygon points="{points}" fill="{accent}"/>'
     )
 
     # Prawa kolumna
     elements.append(svg_text(
-        WIDTH - padding, 25,
+        right_edge, 25,
         right_line1, 10, footer_color, True, "end"
     ))
 
     elements.append(svg_text(
-        WIDTH - padding, 41,
+        right_edge, 41,
         right_line2, 10, footer_color, True, "end"
     ))
 
-    # Footer
     elements.append(svg_text(
-        WIDTH - padding, 64,
+        right_edge, 64,
         footer, 10, footer_color, True, "end"
     ))
 
+    # SVG rozciąga się na całą dostępną szerokość.
+    # viewBox zachowuje proporcje i umożliwia skalowanie.
     svg = f'''<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg"
      width="100%"
      height="75"
-     viewBox="0 0 {WIDTH} 75"
-     preserveAspectRatio="xMinYMin meet">
+     viewBox="0 0 {WIDTH} {HEIGHT}"
+     preserveAspectRatio="none">
 
     <title>{escape(title)}</title>
 
@@ -174,9 +171,7 @@ def main():
         encoding="utf-8"
     )
 
-    print(
-        f"Generated signature.svg ({WIDTH}x{HEIGHT})"
-    )
+    print(f"Generated signature.svg ({WIDTH}x{HEIGHT})")
 
 
 if __name__ == "__main__":
