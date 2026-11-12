@@ -1,3 +1,4 @@
+
 name: Generate forum signature
 
 on:
@@ -15,6 +16,7 @@ permissions:
 jobs:
   generate:
     runs-on: ubuntu-latest
+
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -27,14 +29,14 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Generate PNG
+      - name: Generate SVG
         run: python generate.py
 
       - name: Commit generated files
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add signature.png signature-link.txt
+          git add signature.svg signature-link.txt
           if ! git diff --cached --quiet; then
             git commit -m "Update generated forum signature"
             git push
