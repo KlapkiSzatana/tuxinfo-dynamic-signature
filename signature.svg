@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="100%"
+     height="75"
+     viewBox="0 0 365 75"
+     preserveAspectRatio="xMinYMin meet">
+
+    <title>Metro 2034</title>
+
+    <rect x="12" y="12" width="4" height="51" rx="2" fill="#55A9D8"/><text x="27" y="18" font-family="DejaVu Sans, Arial, sans-serif" font-size="10" font-weight="700" fill="#55A9D8" text-anchor="start">AKTUALNIE CZYTAM</text><text x="27" y="47" font-family="DejaVu Sans, Arial, sans-serif" font-size="22" font-weight="700" fill="#1D2933" text-anchor="start">Metro 2034</text><text x="27" y="64" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" font-weight="400" fill="#788A98" text-anchor="start">Dmitry Glukhovsky</text><polygon points="202.0,10 210.0,10 206.0,30 213.0,30 200.0,64 204.0,40 197.0,40" fill="#55A9D8"/><text x="353" y="25" font-family="DejaVu Sans, Arial, sans-serif" font-size="10" font-weight="700" fill="#1793D1" text-anchor="end">W trakcie</text><text x="353" y="64" font-family="DejaVu Sans, Arial, sans-serif" font-size="10" font-weight="700" fill="#1793D1" text-anchor="end">I USE ARCH • BTW</text>
+
+</svg>
