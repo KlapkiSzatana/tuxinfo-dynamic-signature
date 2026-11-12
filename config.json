@@ -5,9 +5,9 @@
   "status": "W trakcie",
   "footer": "I USE ARCH • BTW",
   "footer_color": "#1793D1",
-  "accent": "#4f8a70",
+  "accent": "#55A9D8",
   "background": "transparent",
-  "foreground": "#202522",
-  "muted": "#737b76",
+  "foreground": "#1D2933",
+  "muted": "#788A98",
   "link": "https://pl.wikipedia.org/wiki/Metro_2033"
 }
