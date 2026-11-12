@@ -2,24 +2,11 @@
 from pathlib import Path
 import json
 from xml.sax.saxutils import escape
-from PIL import ImageFont
 
 ROOT = Path(__file__).resolve().parent
 
 WIDTH = 600
 HEIGHT = 65
-
-def load_font(size, bold=False):
-    path = (
-        "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
-        if bold else
-        "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
-    )
-
-    if Path(path).exists():
-        return ImageFont.truetype(path, size)
-
-    return ImageFont.load_default()
 
 
 def svg_text(x, y, text, size, color, bold=False, anchor="start"):
@@ -55,51 +42,40 @@ def main():
     right_line2 = cfg.get("right_line2", "")
     footer = cfg.get("footer", "TUXINFO • PERSONAL STATUS")
 
-    # Podział kolumn
-    split = 385
-    left_x = 27
-    right_x = 680
-
     elements = []
 
     # Lewy akcent
     elements.append(
-        f'<rect x="12" y="12" width="4" height="51" '
+        f'<rect x="12" y="10" width="4" height="45" '
         f'rx="2" fill="{accent}"/>'
     )
 
     # Lewa kolumna
     elements.append(svg_text(
-        left_x, 18, label, 10, accent, True
+        27, 16, label, 10, accent, True
     ))
 
     elements.append(svg_text(
-        left_x, 47, title, 22, fg, True
+        27, 42, title, 22, fg, True
     ))
 
     elements.append(svg_text(
-        left_x, 64, subtitle, 12, muted
+        27, 58, subtitle, 12, muted
     ))
-
-    # Pionowy separator
-    elements.append(
-        f'<rect x="{split}" y="12" width="1" height="51" '
-        f'fill="{accent}" opacity="0.65"/>'
-    )
 
     # Prawa kolumna
     elements.append(svg_text(
-        right_x, 25, right_line1,
-        10, footer_color, True, "end"
+        588, 19, right_line1,
+        10, fg, True, "end"
     ))
 
     elements.append(svg_text(
-        right_x, 41, right_line2,
-        10, footer_color, True, "end"
+        588, 35, right_line2,
+        10, muted, True, "end"
     ))
 
     elements.append(svg_text(
-        right_x, 64, footer,
+        588, 58, footer,
         10, footer_color, True, "end"
     ))
 
