@@ -1,8 +1,8 @@
 {
-  "label": "AKTUALNIE CZYTAM",
-  "title": "Metro 2035",
-  "subtitle": "Dmitry Glukhovsky",
-  "status": "DELL 5490 (i5 8350/24GB RAM/512GB NVME)",
+  "label": "AKTUALNIE:",
+  "title": "---",
+  "subtitle": "Wybieram coś do czytania...",
+  "status": "DELL 5490 (i5 8350/24GB RAM/512GB SSD)",
   "right_line2": "#jeszczedobry",
   "footer": "I USE ARCH • BTW",
   "footer_color": "#1793D1",
