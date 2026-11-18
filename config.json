@@ -1,7 +1,7 @@
 {
-  "label": "AKTUALNIE:",
-  "title": "---",
-  "subtitle": "Wybieram coś do czytania...",
+  "label": "AKTUALNIE CZYTAM:",
+  "title": "Nocny Prom Do Tangeru",
+  "subtitle": "Kavin Barry",
   "status": "DELL 5490 (i5 8350/24GB RAM/512GB SSD)",
   "right_line2": "#jeszczedobry",
   "footer": "I USE ARCH • BTW",
@@ -10,5 +10,5 @@
   "background": "transparent",
   "foreground": "#1D2933",
   "muted": "#788A98",
-  "link": "https://pl.wikipedia.org/wiki/Metro_2035"
+  "link": ""
 }
